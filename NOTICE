@@ -1,0 +1,21 @@
+Veil
+Copyright 2026 Tars Technologies
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The training data for the model in veil-0.3.1.bin includes text from the following sources, with attribution as
+their licences require:
+
+- Wikipedia articles and talk pages, Wikimedia Foundation and contributors, CC BY-SA 4.0
+- Stack Exchange posts, Stack Exchange Inc. and contributors, CC BY-SA 4.0
+- ABCD (Action-Based Conversations Dataset), ASAPP, MIT License
+- Taskmaster, Google, CC BY 4.0
+- OASST2, OpenAssistant / LAION, Apache License 2.0
+- MASSIVE, Amazon, CC BY 4.0
+- Nemotron-PII, NVIDIA, CC BY 4.0
+- Services Publics+, French government (data.gouv.fr), Licence Ouverte 2.0 (Etalab)
+
+Some labels on the Wikipedia rows were produced by Davlan/xlm-roberta-large-ner-hrl, Academic Free License 3.0.
+
+The word lists in veil-0.3.1.bin and training/assets/gazetteer.json.gz contain person names from Wikidata (CC0),
+place names from GeoNames (geonames.org, CC BY 4.0), and common words taken from the training text.

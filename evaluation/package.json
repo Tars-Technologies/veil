@@ -1,0 +1,8 @@
+{
+  "name": "veil-evaluation",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@newmean-ai/pii": "1.6.0"
+  }
+}

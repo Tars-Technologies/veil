@@ -1,0 +1,9 @@
+{
+  "buckets": 32768,
+  "dim": 64,
+  "hidden": 96,
+  "layers": 2,
+  "round": true,
+  "bloom": 20,
+  "bloom_k": 8
+}

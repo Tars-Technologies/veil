@@ -1,0 +1,58 @@
+[
+  {
+    "text": "write to anna.schmidt@example.com today",
+    "ranges": [[9, 33]]
+  },
+  {
+    "text": "see https://example.com/anna-schmidt.",
+    "ranges": [[4, 36]]
+  },
+  {
+    "text": "see HTTPS://Anna.example.com and WWW.anna.example",
+    "ranges": [[4, 28], [33, 49]]
+  },
+  {
+    "text": "open /home/anna/notes.txt please",
+    "ranges": [[5, 25]]
+  },
+  {
+    "text": "open C:\\Anna\\file.txt please",
+    "ranges": [[5, 21]]
+  },
+  {
+    "text": "open ./Anna.txt or ../docs/Anna",
+    "ranges": [[5, 15], [19, 31]]
+  },
+  {
+    "text": "open .\\Anna.txt",
+    "ranges": [[5, 15]]
+  },
+  {
+    "text": "share \\\\host\\Anna\\file",
+    "ranges": [[6, 22]]
+  },
+  {
+    "text": "see _/Anna/file_.",
+    "ranges": [[5, 17]]
+  },
+  {
+    "text": "call.../Anna",
+    "ranges": []
+  },
+  {
+    "text": "and/or, a/b, 12/05/2026, snake_case/other",
+    "ranges": []
+  },
+  {
+    "text": "/Anna",
+    "ranges": []
+  },
+  {
+    "text": "😀 mail anna@example.com 😀 https://example.com/a",
+    "ranges": [[8, 24], [28, 49]]
+  },
+  {
+    "text": "no links here, only Anna Schmidt",
+    "ranges": []
+  }
+]

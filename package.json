@@ -1,0 +1,50 @@
+{
+  "name": "@tars-technologies/veil",
+  "version": "0.3.1",
+  "description": "Small on-device model and library that finds person names and other personal data in text.",
+  "author": "Vaibhav Kubre <v@kubre.in>",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "exports": {
+    ".": "./src/veil.ts",
+    "./chunked": "./src/chunked.ts",
+    "./model": "./src/model.ts",
+    "./browser": "./src/browser.ts",
+    "./react": "./src/react.tsx",
+    "./veil-0.3.1.bin": "./veil-0.3.1.bin"
+  },
+  "files": [
+    "src",
+    "veil-0.3.1.bin",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "embed": "node scripts/embed.mjs src/model.ts",
+    "demo": "vite demo",
+    "demo:build": "vite build demo",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ci": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "25.9.2",
+    "@types/react": "19.2.17",
+    "react": "19.2.7",
+    "tsx": "4.23.1",
+    "typescript": "7.0.2",
+    "vite": "8.1.6",
+    "vitest": "5.0.5"
+  }
+}
