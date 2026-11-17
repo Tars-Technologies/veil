@@ -1,10 +1,9 @@
-import packageJson from "../package.json"
-import { type MaskOptions, redact } from "./detect"
-import type { ModelInfo, Span, SpanType } from "./engine"
+import { type MaskOptions, redact } from "./detect.ts"
+import type { ModelInfo, Span, SpanType } from "./engine.ts"
 
 export type { MaskOptions, ModelInfo, Span, SpanType }
 
-export const version: string = packageJson.version
+export const version = "0.3.1"
 
 export type Defaults = Omit<MaskOptions, "text">
 

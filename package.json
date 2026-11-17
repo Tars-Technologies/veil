@@ -13,15 +13,30 @@
   "type": "module",
   "packageManager": "pnpm@11.22.0",
   "exports": {
-    ".": "./src/veil.ts",
-    "./chunked": "./src/chunked.ts",
-    "./model": "./src/model.ts",
-    "./browser": "./src/browser.ts",
-    "./react": "./src/react.tsx",
+    ".": {
+      "types": "./dist/veil.d.ts",
+      "default": "./dist/veil.js"
+    },
+    "./chunked": {
+      "types": "./dist/chunked.d.ts",
+      "default": "./dist/chunked.js"
+    },
+    "./model": {
+      "types": "./dist/model.d.ts",
+      "default": "./dist/model.js"
+    },
+    "./browser": {
+      "types": "./dist/browser.d.ts",
+      "default": "./dist/browser.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
     "./veil-0.3.1.bin": "./veil-0.3.1.bin"
   },
   "files": [
-    "src",
+    "dist",
     "veil-0.3.1.bin",
     "LICENSE",
     "NOTICE"
@@ -29,6 +44,7 @@
   "sideEffects": false,
   "scripts": {
     "embed": "node scripts/embed.mjs src/model.ts",
+    "build": "tsc -p tsconfig.build.json && node scripts/worker-url.mjs",
     "demo": "vite demo",
     "demo:build": "vite build demo",
     "type-check": "tsc --noEmit",

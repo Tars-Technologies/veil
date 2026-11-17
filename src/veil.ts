@@ -4,9 +4,9 @@ import {
   type Runtime,
   type Veil,
   type VeilOptions
-} from "./client"
-import { detect } from "./detect"
-import { Engine } from "./engine"
+} from "./client.ts"
+import { detect } from "./detect.ts"
+import { Engine } from "./engine.ts"
 
 export {
   type Defaults,
@@ -17,7 +17,7 @@ export {
   type Veil,
   type VeilOptions,
   version
-} from "./client"
+} from "./client.ts"
 
 export async function localRuntime(
   model: ArrayBuffer | string

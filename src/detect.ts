@@ -4,7 +4,7 @@ import {
   nonNameRanges,
   type Span,
   type SpanType
-} from "./engine"
+} from "./engine.ts"
 
 export type MaskOptions = {
   text: string

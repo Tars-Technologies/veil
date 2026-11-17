@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
-import type { MaskOptions } from "./detect"
-import { localRuntime } from "./veil"
+import type { MaskOptions } from "./detect.ts"
+import { localRuntime } from "./veil.ts"
 
 export type Request = {
   id: number

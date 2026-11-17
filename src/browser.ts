@@ -6,8 +6,8 @@ import {
   type Span,
   type Veil,
   type VeilOptions
-} from "./client"
-import type { Reply, Request } from "./worker"
+} from "./client.ts"
+import type { Reply, Request } from "./worker.ts"
 
 export {
   type Defaults,
@@ -18,7 +18,7 @@ export {
   type Veil,
   type VeilOptions,
   version
-} from "./client"
+} from "./client.ts"
 
 async function workerRuntime(
   model: ArrayBuffer | string,

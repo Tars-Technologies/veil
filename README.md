@@ -24,11 +24,13 @@ await veil.mask({
 
 ```sh
 npm install github:Tars-Technologies/veil#v0.3.1
+pnpm add github:Tars-Technologies/veil#v0.3.1
+bun add github:Tars-Technologies/veil#v0.3.1
 ```
 
-The package ships TypeScript source. Use it with a bundler or runtime that compiles TypeScript, such as Vite,
-esbuild, tsx or Bun. Node's built-in TypeScript support does not compile packages in `node_modules`, so in Node run
-your code with tsx, as an ES module (`"type": "module"` or a `.mts` file).
+The package is compiled JavaScript (ES modules) with type declarations and no dependencies. It is tested with pnpm 11
+and Bun 1.4, in Node 24 with both `import` and `require`, and in the browser with Vite. React is an optional peer
+dependency, used only by `@tars-technologies/veil/react`.
 
 ## Usage
 

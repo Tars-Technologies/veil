@@ -1,5 +1,5 @@
-import type { Veil } from "./client"
-import { applyTermOverrides, type MaskOptions } from "./detect"
+import type { Veil } from "./client.ts"
+import { applyTermOverrides, type MaskOptions } from "./detect.ts"
 import {
   CONTEXT_CHARS,
   MAX_CHARS,
@@ -10,7 +10,7 @@ import {
   tokenize,
   WINDOW_STRIDE,
   WINDOW_TOKENS
-} from "./engine"
+} from "./engine.ts"
 
 // Twelve model windows per call, with the same 64-token overlap as the engine.
 // Leave room for the engine's bounded question context in every call.

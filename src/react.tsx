@@ -5,9 +5,9 @@ import {
   useEffect,
   useState
 } from "react"
-import type { Veil } from "./client"
-import { type MaskOptions, redact } from "./detect"
-import type { Span } from "./engine"
+import type { Veil } from "./client.ts"
+import { type MaskOptions, redact } from "./detect.ts"
+import type { Span } from "./engine.ts"
 
 const VeilContext = createContext<Veil | null>(null)
 
