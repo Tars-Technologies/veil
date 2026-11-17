@@ -24,7 +24,7 @@ sha256sum /tmp/veil.bin ../veil-0.3.1.bin     # the two hashes are equal
 A training row is one JSON object per line, with UTF-16 offsets:
 
 ```json
-{"text": "Hi, I'm Anna Schmidt, call +49 151 23456789", "names": [[8, 20]], "spans": [[27, 43, "PHONE"]]}
+{"text": "Hi, I'm Anna Schmidt, call +33 6 39 98 45 67", "names": [[8, 20]], "spans": [[27, 44, "PHONE"]]}
 ```
 
 ```sh

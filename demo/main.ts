@@ -16,7 +16,7 @@ const SAMPLES: { name: string; text: string }[] = [
     name: "Support chat",
     text:
       "Hi, this is Laura Bianchi. My parcel has not arrived yet. Please send it to 14 Rue des Lilas, 69003 Lyon, " +
-      "or call me on +33 6 12 34 56 78. My email is laura.bianchi@example.com."
+      "or call me on +33 6 39 98 12 34. My email is laura.bianchi@example.com."
   },
   {
     name: "Account form",
@@ -121,11 +121,17 @@ async function update() {
   thresholdValue.value = Number(threshold.value).toFixed(2)
   const current = ++request
   const started = performance.now()
-  const spans = await veil.detect({
-    text: value,
-    threshold: Number(threshold.value),
-    types: TYPES.map(({ type }) => type).filter((type) => selected.has(type))
-  })
+  let spans: Span[]
+  try {
+    spans = await veil.detect({
+      text: value,
+      threshold: Number(threshold.value),
+      types: TYPES.map(({ type }) => type).filter((type) => selected.has(type))
+    })
+  } catch (error) {
+    if (current === request) status.textContent = (error as Error).message.replace(/^veil: /, "")
+    return
+  }
   if (current !== request) return
   const elapsed = performance.now() - started
   if (highlighted) render(highlighted, value, spans, "label")

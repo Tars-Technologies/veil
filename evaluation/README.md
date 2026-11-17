@@ -1,6 +1,8 @@
 # Evaluation
 
-`PERSON` detection on five public test sets. None of them is in the Veil training data.
+`PERSON` detection on five public test sets. None of them is in the Veil training data. The model that labelled
+Veil's Wikipedia rows was trained on the CoNLL-2003 English and CoNLL-2002 Spanish and Dutch training splits; their
+test splits were not used.
 
 | Set | Text | Licence | Gold |
 |---|---|---|---|

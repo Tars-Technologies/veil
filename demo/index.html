@@ -66,6 +66,10 @@
       .head { height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 12px 0 20px; border-bottom: 1px solid var(--line); }
       .caption { font-size: 13px; color: var(--muted); }
       .samples, .tabs { display: flex; gap: 2px; }
+      .col { display: flex; flex-direction: column; min-width: 0; }
+      .col .pane { flex: 1; }
+      .samples { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+      .sample { flex: none; }
       .sample, .tabs button {
         border: 0; background: none; cursor: pointer;
         font-size: 13px; color: var(--muted);
@@ -155,7 +159,8 @@
         .facts { gap: 16px; flex-wrap: wrap; }
         .row { grid-template-columns: 1fr; }
         .row > * + * { border-left: 0; border-top: 1px solid var(--line); }
-        .head { height: auto; min-height: 52px; flex-wrap: wrap; padding: 8px 12px 8px 16px; }
+        .head { padding: 0 12px 0 16px; }
+        .caption { display: none; }
         .pane, textarea, .out { min-height: 220px; }
       }
     </style>
@@ -182,27 +187,29 @@
 
       <section class="tool">
         <div class="row">
-          <div class="head">
-            <span class="caption">Examples</span>
-            <div class="samples" id="samples"></div>
-          </div>
-          <div class="head">
-            <div class="tabs" role="tablist">
-              <button type="button" data-tab="highlighted" aria-selected="true">Found</button>
-              <button type="button" data-tab="masked" aria-selected="false">Masked</button>
-              <button type="button" data-tab="json" aria-selected="false">JSON</button>
+          <div class="col">
+            <div class="head">
+              <span class="caption">Examples</span>
+              <div class="samples" id="samples"></div>
             </div>
-            <button class="copy" id="copy" type="button">Copy</button>
+            <div class="pane">
+              <textarea id="text" spellcheck="false" aria-label="Text to check"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="pane">
-            <textarea id="text" spellcheck="false" aria-label="Text to check"></textarea>
-          </div>
-          <div class="pane">
-            <div class="out" id="highlighted" data-panel="highlighted"></div>
-            <div class="out" id="masked" data-panel="masked" hidden></div>
-            <pre class="out" id="json" data-panel="json" hidden></pre>
+          <div class="col">
+            <div class="head">
+              <div class="tabs" role="tablist">
+                <button type="button" data-tab="highlighted" aria-selected="true">Found</button>
+                <button type="button" data-tab="masked" aria-selected="false">Masked</button>
+                <button type="button" data-tab="json" aria-selected="false">JSON</button>
+              </div>
+              <button class="copy" id="copy" type="button">Copy</button>
+            </div>
+            <div class="pane">
+              <div class="out" id="highlighted" data-panel="highlighted"></div>
+              <div class="out" id="masked" data-panel="masked" hidden></div>
+              <pre class="out" id="json" data-panel="json" hidden></pre>
+            </div>
           </div>
         </div>
         <div class="foot">
@@ -217,7 +224,7 @@
 
       <footer>
         <span>Apache-2.0</span>
-        <span>Lower the threshold to mask more</span>
+        <span>Lower the threshold to mask more names</span>
       </footer>
     </div>
     <script type="module" src="./main.ts"></script>

@@ -268,9 +268,9 @@ describe("options", () => {
   })
 
   it("types: finds the listed kinds and names each replacement", async () => {
-    const text = "I am Anna Schmidt, born 3 May 1990, call +49 151 23456789"
+    const text = "I am Anna Schmidt, born 3 May 1990, call +33 6 39 98 45 67"
     expect(await veil.mask({ text })).toBe(
-      "I am [NAME], born 3 May 1990, call +49 151 23456789"
+      "I am [NAME], born 3 May 1990, call +33 6 39 98 45 67"
     )
     expect(await veil.mask({ text, types: ["DOB", "PHONE"] })).toBe(
       "I am Anna Schmidt, born [DATE OF BIRTH], call [PHONE]"

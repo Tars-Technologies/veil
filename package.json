@@ -4,6 +4,11 @@
   "description": "Small on-device model and library that finds person names and other personal data in text.",
   "author": "Vaibhav Kubre <v@kubre.in>",
   "license": "Apache-2.0",
+  "homepage": "https://tars-technologies.github.io/veil/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tars-Technologies/veil.git"
+  },
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.22.0",

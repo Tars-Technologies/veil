@@ -5,7 +5,7 @@ stored, logged or sent to another service. The model is 1.18 MB. It runs in the 
 dependencies and no network calls.
 
 **[Try the demo](https://tars-technologies.github.io/veil/).** The model runs in your browser, so the text you type
-stays on your machine.
+stays on your machine. The model file is also on [Hugging Face](https://huggingface.co/tars-technologies/veil).
 
 ```ts
 import { createVeil } from "@tars-technologies/veil"
@@ -14,7 +14,7 @@ import { loadModel } from "@tars-technologies/veil/model"
 const veil = createVeil({ model: loadModel() })
 
 await veil.mask({
-  text: "I'm Laura Bianchi, call me on +33 6 12 34 56 78 or write to laura.bianchi@example.com",
+  text: "I'm Laura Bianchi, call me on +33 6 39 98 12 34 or write to laura.bianchi@example.com",
   types: ["PERSON", "PHONE", "EMAIL"]
 })
 // "I'm [NAME], call me on [PHONE] or write to [EMAIL]"
@@ -23,11 +23,12 @@ await veil.mask({
 ## Install
 
 ```sh
-npm install github:Tars-Technologies/veil
+npm install github:Tars-Technologies/veil#v0.3.1
 ```
 
 The package ships TypeScript source. Use it with a bundler or runtime that compiles TypeScript, such as Vite,
-esbuild, tsx or Bun.
+esbuild, tsx or Bun. Node's built-in TypeScript support does not compile packages in `node_modules`, so in Node run
+your code with tsx, as an ES module (`"type": "module"` or a `.mts` file).
 
 ## Usage
 
@@ -96,19 +97,21 @@ const { data, spans, isPending, error } = useMask({ text: draft, types: ["PERSON
 |---|---|
 | Author | Vaibhav Kubre, Tars Technologies |
 | Labels | `PERSON`, `ADDRESS`, `DOB`, `ID`, `FINANCIAL`, `PHONE`, `EMAIL` |
-| Architecture | Hashed character n-gram embeddings (32,768 buckets × 64, 2-bit codes), word-shape features and three word-list flags, into a 2-layer bidirectional LSTM with 96 units. Weights are int8. |
+| Architecture | Hashed character n-gram embeddings (32,768 buckets × 64, 2-bit codes), word-shape features and three word-list flags, into a 2-layer bidirectional LSTM with 96 units. LSTM and output weights are int8 with one scale per row. |
 | Size | 1,177,096 bytes (`veil-0.3.1.bin`) |
 | Languages | Latin script. Most training text is English, German, French, Spanish, Dutch, Portuguese or Italian. |
 | Input | Windows of 256 tokens with a 64-token overlap. Up to 300 characters of `context`. |
-| Licence | Apache-2.0 for code and model. `NOTICE` credits the data sources. |
+| Licence | Apache-2.0 for code and model. `NOTICE` credits the data sources. The word lists keep their source licences (Wikidata CC0, GeoNames CC BY 4.0). |
 
 The model file carries its name, version and format in a header and ends with a checksum. The library reads format 3
 and rejects a file whose checksum does not match. Each new model gets a new file name.
 
 ## Evaluation
 
-We measured `PERSON` on five public test sets. None of them is in the training data. All models use their default
-settings. Exact-match F1:
+We measured `PERSON` on five public test sets. None of them is in the training data. The model that labelled the
+Wikipedia rows was trained on the CoNLL-2003 English and CoNLL-2002 Spanish and Dutch training splits; their test
+splits were not used. All models use their default settings. F1 on exact span match, except that the TAB row ignores
+a leading title (see below):
 
 | Test set | Names | Veil 0.3.1 (1.2 MB) | spaCy sm (15 MB) | newmean nano (2.6 MB) | newmean small (7.1 MB) | newmean large (20.7 MB) |
 |---|---|---|---|---|---|---|
@@ -143,7 +146,7 @@ The training data includes these public datasets:
 
 | Source | Rows | Licence |
 |---|---|---|
-| Wikipedia articles (DE, FR, EN), labelled by a larger model | 181,689 | CC BY-SA |
+| Wikipedia articles (DE, FR, EN), labelled by a larger model | 181,689 | CC BY-SA 4.0 |
 | Wikipedia talk pages (FR, NL, ES, PT, DE, IT) | 40,371 | CC BY-SA 4.0 |
 | ABCD customer-service dialogues | 74,792 | MIT |
 | Taskmaster dialogues | 39,723 | CC BY 4.0 |
@@ -153,8 +156,8 @@ The training data includes these public datasets:
 | French public-service texts | 7,206 | Licence Ouverte 2.0 |
 | NVIDIA Nemotron-PII | 96,050 | CC BY 4.0 |
 
-The word-list flags come from three lists in `training/assets/gazetteer.json.gz`: given names and surnames
-(including Wikidata), places from GeoNames, and common words from the training text. The training set itself is not
+The word-list flags come from three lists in `training/assets/gazetteer.json.gz`: given names and surnames,
+places from GeoNames, and common words from the training text. The training set itself is not
 published. [`training/`](training/README.md) has the trainer, the checkpoint and the export script, which rebuilds
 `veil-0.3.1.bin` byte for byte.
 
